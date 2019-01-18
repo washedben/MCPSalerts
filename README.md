@@ -4,7 +4,7 @@ Alerts you if school is cancelled or delayed and texts you faster than mcps syst
 
 # Modules required:
 Requests
-Timem,
+Time,
 Smtplib,
 Sys
 
