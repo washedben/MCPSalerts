@@ -14,7 +14,7 @@ Firstly, install python 3 if you have not already. Just google python 3 install.
 
 Then, enable less secure apps @ https://www.google.com/settings/security/lesssecureapps
 
-Install git if you have not already, and type "git install (module here)" for each module. Then run the script by typing "cd " then drag the "MCPSalerts" folder to terminal. Then type "python3 mcpsv2.py"
+Install git if you have not already, and type "git install (module here)" for each module in a terminal window. If you don't know what terminal is, search it on your computer and open it. Then run the script by typing "cd " then drag the "MCPSalerts" folder to terminal. Then type "python3 mcpsv2.py"
 
 Input all information and it will run.
 
