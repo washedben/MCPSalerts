@@ -17,6 +17,7 @@ gmail_address = str(input("Enter Gmail Address: "))
 password = str(input("Enter Gmail Password: "))
 msg1 = 'School cancelled lets go!!!'
 msg2 = 'School delayed lets go!!!'
+msg3 = 'UPDATE: SCHOOL CANCELLED!!!!!!! GO BACK TO SLEEP!'
 text_amount = 3 #IGNORE
 carrier = str(input("What Carrier do you have? (tmobile, sprint, verizon, att): "))
 
@@ -58,6 +59,20 @@ def sms(message):
         time.sleep(wait)
     server.quit()
 
+def schoolAlreadyDelayed():
+    while True:
+        dd = requests.get('https://montgomeryschoolsmd.org').text.count('closed')
+        if dd > 0:
+            print('School cancelled! Finally! Sending texts...')
+            sms(msg3)
+            print("{} texts were sent! -  happy sleeping".format(text_amount))
+            sys.exit()
+        else:
+            print('School still not cancelled. Pls MCPS!!! Scanning again')
+            time.sleep(2)
+
+
+
 
 while True:
     c = requests.get('https://montgomeryschoolsmd.org').text.count('delayed') #Can be edited with other website for other school
@@ -67,7 +82,14 @@ while True:
         print('School delayed! Sending texts...')
         sms(msg2)
         print("{} texts were sent! -  happy sleeping".format(text_amount))
-        sys.exit()
+        time.sleep(2)
+        print("------------------------------------------------------")
+        print("     School is currently delayed my friend")
+        print("We will continue to scan + notify you if school is cancelled")
+        print("-------------------------------------------------------")
+        time.sleep(2)
+        schoolAlreadyDelayed()
+
     else:
         print('School not delayed, scanning again')
         time.sleep(2)
@@ -79,3 +101,4 @@ while True:
         else:
             print('School not cancelled, scanning again')
             time.sleep(2)
+
