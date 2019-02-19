@@ -30,7 +30,7 @@ print('Thanks! We will notify when a change of school schedule occurs.')
 
 
 
-carrier_email = ""
+arrier_email = ""
 target_email = phone_num+"@"+carrier_email
 
 if carrier == "tmobile":
@@ -45,7 +45,6 @@ else:
 	print("Entered Carrier Wrong!")
 
 
-
 def sms(message):
     carrier_email = "vtext.com"
     target_email = phone_num+"@"+carrier_email
@@ -54,8 +53,8 @@ def sms(message):
     server.starttls()
     server.login(gmail_address, password)
     for _ in range(0,text_amount):
-        server.sendmail(gmail_address,target_email,msg2)
-        print("Sent "+phone_num+" - "+msg2)
+        server.sendmail(gmail_address,target_email,message)
+        print("Sent "+phone_num+" - " + message)
         time.sleep(wait)
     server.quit()
 
@@ -63,7 +62,8 @@ def schoolAlreadyDelayed():
     while True:
         dd = requests.get('https://montgomeryschoolsmd.org').text.count('closed')
         if dd > 0:
-            print('School cancelled! Finally! Sending texts...')
+            Time = time.strftime("%I:%M:%S %p", time.localtime())
+            print(Time + '  |  ' + 'School cancelled! Finally! Sending texts...')
             sms(msg3)
             print("{} texts were sent! -  happy sleeping".format(text_amount))
             sys.exit()
@@ -79,9 +79,11 @@ while True:
     d = requests.get('https://montgomeryschoolsmd.org').text.count('closed') #Same as here
 
     if c > 0:
-        print('School delayed! Sending texts...')
+        Time = time.strftime("%I:%M:%S %p", time.localtime())
+        print(Time + '  |  ' + 'School delayed! Sending texts...')
         sms(msg2)
-        print("{} texts were sent! -  happy sleeping".format(text_amount))
+        Time = time.strftime("%I:%M:%S %p", time.localtime())
+        print(Time + '  |  ' + "{} texts were sent! -  happy sleeping".format(text_amount))
         time.sleep(2)
         print("------------------------------------------------------")
         print("     School is currently delayed my friend")
@@ -89,16 +91,18 @@ while True:
         print("-------------------------------------------------------")
         time.sleep(2)
         schoolAlreadyDelayed()
-
     else:
-        print('School not delayed, scanning again')
+        Time = time.strftime("%I:%M:%S %p", time.localtime())
+        print(Time +'  |  ' + 'School not delayed, scanning again')
         time.sleep(2)
         if d > 0:
-            print('School cancelled! Sending texts...')
-            sms(msg1)
-            print("{} texts were sent! -  happy sleeping".format(text_amount))
+            Time = time.strftime("%I:%M:%S %p", time.localtime())
+            print(Time + '  |  ' + 'School cancelled! Sending texts...')
+            sms(cancelledgang)
+            Time = time.strftime("%I:%M:%S %p", time.localtime())
+            print(Time + '  |  ' + "{} texts were sent! -  happy sleeping".format(text_amount))
             sys.exit()
         else:
-            print('School not cancelled, scanning again')
+            Time = time.strftime("%I:%M:%S %p", time.localtime())
+            print(Time + '  |  ' + 'School not cancelled, scanning again')
             time.sleep(2)
-
