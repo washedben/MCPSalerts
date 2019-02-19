@@ -5,10 +5,10 @@ Alerts you if school is cancelled or delayed and texts you faster than mcps syst
 I use your gmail account to text your phone number through google's mail to text system. Don't worry, your information is only stored locally on your computer and nowhere else. 
 
 # Modules required:
-Requests,
-Time,
-Smtplib,
-Sys
+## Requests,
+## Time,
+## Smtplib,
+## Sys
 
 Firstly, install python 3 if you have not already. Just google python 3 install.
 
