@@ -2,7 +2,7 @@
 Alerts you if school is cancelled or delayed and texts you faster than mcps system. Runs on MCPS website, can be adapted for others.
 
 # How this works:
-I use your gmail account to text your phone number through google's mail to text system. Don't worry, your information is only stored locally on your computer and nowhere else. 
+The script uses your gmail account to text your phone number through google's mail to text system. Don't worry, your information is only stored locally on your computer and nowhere else. 
 
 # Modules required:
 ## Requests, time, smptlib, sys
